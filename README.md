@@ -24,7 +24,6 @@ agent-team-workflow/
 │   └── workflow-overview.md           # 流程架构图及实践背景介绍
 ├── .gitignore                         # Git 忽略配置文件
 ├── .env.example                       # 环境变量配置示例
-├── requirements.txt                   # 依赖说明文件
 └── skill.md                           # 智能体技能核心定义文件 (包含 YAML Metadata 及中文指令)
 ```
 
@@ -61,8 +60,3 @@ cp .env.example .env
 *   **阶段 1-2**：根据功能清单，逐个模块串行逆向输出 PRD，并进行 DoD 测试准入合规性自检。
 *   **阶段 3-4**：对通过 PRD 审核的模块，读取后端接口生成接口文档并开展字段级别审查。
 *   **阶段 5-6**：分析底层方法链条和事务逻辑，生成微服务详细设计文档并进行审核闭环。
-
----
-
-## 4. 依赖说明
-本工作流属于高级提示词与规则驱动工作流，不需要在 Python 运行时中配置强依赖。详情请参阅 `requirements.txt`。
