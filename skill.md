@@ -1,7 +1,7 @@
 ---
 name: code-reconstruction-workflow
 version: 1.0.0
-description: A workflow for reverse-engineering product documentation (Feature Lists, PRDs, API Docs, and Detailed Design Docs) from microservice source code using an Agent Team.
+description: 使用智能体团队（Agent Team）从微服务源代码中逆向构建产品文档（功能清单、PRD、接口文档和详细设计文档）的工作流技能。
 emoji: "🔄"
 metadata:
   openclaw:
@@ -15,13 +15,13 @@ metadata:
     envVars:
       - name: CODE_ROOT
         required: true
-        description: Path to the microservice source code root directory.
+        description: 微服务源代码根目录的路径。
       - name: RULES_ROOT
         required: true
-        description: Path to the rules/commands templates root directory (e.g. the commands folder).
+        description: 规则/指令模板根目录的路径（例如 commands 文件夹）。
       - name: OUTPUT_ROOT
         required: true
-        description: Path to the output directory where generated docs will be saved.
+        description: 保存生成的知识库文档的输出目录路径。
 ---
 
 # Code Reconstruction Agent Team Workflow (代码反构智能体协同工作流)
@@ -36,7 +36,7 @@ metadata:
 *   **代码根目录**：`${CODE_ROOT}`
 *   **输出根目录**：`${OUTPUT_ROOT}`
 
-### 1.2 规则文档映射 (Environment Variable relative Paths)
+### 1.2 规则文档映射 (环境变量相对路径)
 所有规则文件统一存放在 `${RULES_ROOT}` 目录下：
 *   **功能清单规则**：`${RULES_ROOT}/01-prd-rules/feature-list-generation-rules_v1.md`
 *   **PRD 生成规则**：`${RULES_ROOT}/01-prd-rules/prd-generation_v8.md` *(含 §9.1 与《需求测试准入 DoD》对齐；定稿前自检)*
