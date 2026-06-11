@@ -8,7 +8,7 @@
 
 ```text
 agent-team-workflow/
-├── commands/                          # 核心执行规则模板
+├── commands/                          # 核心执行规则模板目录
 │   ├── 01-prd-rules/                  # 功能清单与需求PRD生成/审查规则
 │   │   ├── feature-list-generation-rules_v1.md
 │   │   ├── prd-generation_v8.md
@@ -22,9 +22,10 @@ agent-team-workflow/
 │       └── design-doc-reconstruction-review-rules_v2.md
 ├── reference-docs/                    # 参考文档与总览说明
 │   └── workflow-overview.md           # 流程架构图及实践背景介绍
+├── .gitignore                         # Git 忽略配置文件
 ├── .env.example                       # 环境变量配置示例
 ├── requirements.txt                   # 依赖说明文件
-└── skill.md                           # OpenClaw 技能核心定义文件 (包含 Manifest 及指令)
+└── skill.md                           # OpenClaw 技能核心定义文件 (包含 YAML Metadata 及中文指令)
 ```
 
 ---
@@ -40,10 +41,10 @@ cp .env.example .env
 ```
 
 ### 第二步：配置环境变量
-编辑 `.env` 文件，将其中的路径修改为您本地对应的物理路径：
-*   `CODE_ROOT`：指向您本地待分析的微服务源代码物理目录。
-*   `RULES_ROOT`：指向本仓库的 `commands` 文件夹所在的绝对路径。
-*   `OUTPUT_ROOT`：指向用于保存生成知识库文档的输出目标绝对路径。
+编辑 `.env` 文件，将其中的路径修改为您本地对应的实际路径（请使用绝对路径，以下为脱敏示例）：
+*   `CODE_ROOT`：指向您本地待分析的微服务源代码物理目录（例如：`/path/to/your/source-code`）。
+*   `RULES_ROOT`：指向本仓库的 `commands` 文件夹所在的绝对路径（例如：`/path/to/agent-team-workflow/commands`）。
+*   `OUTPUT_ROOT`：指向用于保存生成知识库文档的输出目标绝对路径（例如：`/path/to/your/output/knowledge`）。
 
 ---
 
@@ -56,12 +57,12 @@ cp .env.example .env
 
 ### 3.2 智能体执行过程
 在 OpenClaw 执行时，系统会读取 `skill.md` 中的 YAML 头部，加载所需的环境变量：
-*   **Phase 0**：调用功能清单规则在 `${OUTPUT_ROOT}/knowledge/功能清单.md` 生成系统全景框架。
-*   **Phase 1-2**：根据功能清单，逐个模块串行逆向输出 PRD，并进行 DoD 测试准入合规性自检。
-*   **Phase 3-4**：对通过 PRD 审核的模块，读取后端接口生成接口文档并开展字段级别审查。
-*   **Phase 5-6**：分析底层方法链条和事务逻辑，生成微服务详细设计文档并进行审核闭环。
+*   **阶段 0**：调用功能清单规则在 `${OUTPUT_ROOT}/knowledge/功能清单.md` 生成系统全景框架。
+*   **阶段 1-2**：根据功能清单，逐个模块串行逆向输出 PRD，并进行 DoD 测试准入合规性自检。
+*   **阶段 3-4**：对通过 PRD 审核的模块，读取后端接口生成接口文档并开展字段级别审查。
+*   **阶段 5-6**：分析底层方法链条和事务逻辑，生成微服务详细设计文档并进行审核闭环。
 
 ---
 
 ## 4. 依赖说明
-本工作流属于高级提示词与规则驱动工作流，不需要在 Python 运行时中配置强依赖。详情请参阅 [requirements.txt](file:///d:/Users/10265696/Documents/AI%20Transformation/Skill/agent-team-workflow/requirements.txt)。
+本工作流属于高级提示词与规则驱动工作流，不需要在 Python 运行时中配置强依赖。详情请参阅 `requirements.txt`。
