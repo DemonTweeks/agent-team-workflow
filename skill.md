@@ -3,30 +3,28 @@ name: code-reconstruction-workflow
 version: 1.0.0
 description: 使用智能体团队（Agent Team）从微服务源代码中逆向构建产品文档（功能清单、PRD、接口文档和详细设计文档）的工作流技能。
 emoji: "🔄"
-metadata:
-  openclaw:
-    requires:
-      env:
-        - CODE_ROOT
-        - RULES_ROOT
-        - OUTPUT_ROOT
-      bins:
-        - git
-    envVars:
-      - name: CODE_ROOT
-        required: true
-        description: 微服务源代码根目录的路径。
-      - name: RULES_ROOT
-        required: true
-        description: 规则/指令模板根目录的路径（例如 commands 文件夹）。
-      - name: OUTPUT_ROOT
-        required: true
-        description: 保存生成的知识库文档的输出目录路径。
+requires:
+  env:
+    - CODE_ROOT
+    - RULES_ROOT
+    - OUTPUT_ROOT
+  bins:
+    - git
+envVars:
+  - name: CODE_ROOT
+    required: true
+    description: 微服务源代码根目录的路径。
+  - name: RULES_ROOT
+    required: true
+    description: 规则/指令模板根目录的路径（例如 commands 文件夹）。
+  - name: OUTPUT_ROOT
+    required: true
+    description: 保存生成的知识库文档的输出目录路径。
 ---
 
 # Code Reconstruction Agent Team Workflow (代码反构智能体协同工作流)
 
-本 Skill 定义了如何通过构建智能体协同团队（Agent Team），从微服务代码库逆向构建完整的产品知识体系文档（功能清单、PRD、接口文档、详细设计文档）。
+本智能体技能定义了如何通过构建智能体协同团队（Agent Team），从微服务代码库逆向构建完整的产品知识体系文档（功能清单、PRD、接口文档、详细设计文档）。
 
 ---
 
@@ -85,7 +83,7 @@ metadata:
 ### 【阶段 3 | 接口文档生成】
 *   **前提条件**：对应子模块的“PRD + 审查报告”均已通过。
 *   **输出路径与命名**：  
-    `${OUTPUT_ROOT}/knowledge/micro/{微服务名称}/api-docs/{两位序号}_{模块短名}_{子模块短名}_接口文档.md`
+    `${OUTPUT_ROOT}/knowledge/micro/{微服务名称}/api-docs/{两位序号}_{模块短名}_{子模块阻名}_接口文档.md`
 *   **执行规则**：分析后端接口，严格按照 `${RULES_ROOT}/02-api-rules/api-doc-generation-rules_v1.md` 提取并输出接口字段、输入输出格式及调用实例。
 
 ### 【阶段 4 | 接口审查与迭代】
