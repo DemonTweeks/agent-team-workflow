@@ -1,0 +1,14 @@
+# ==============================================================================
+# OpenClaw Code Reconstruction Workflow - Dependencies
+# ==============================================================================
+# 本工作流主要由大语言模型智能体（LLM Agents）根据 Markdown 规则文件和提示词直接执行，
+# 因此无需在 Python 运行时中安装强制性的硬性业务依赖。
+#
+# 如果您需要在本地对生成的 Markdown 文档或 Mermaid 流程图进行本地解析/渲染或合规性静态扫描，
+# 可以根据需要安装以下可选的辅助包：
+
+# [可选] 用于在命令行预览或处理 Markdown 内容
+# markdown-it-py>=2.2.0
+
+# [可选] 用于在本地验证 Mermaid 脚本语法或转换为图片 (通常需要 Node.js 环境及 @mermaid-js/mermaid-cli)
+# Optional linting or helper scripts requirements can be added here in the future
